@@ -22,7 +22,7 @@ build_script:
  - ps: (Get-Content "project.json") -replace '"1\.0"', ('"' + $env:VERSION '"') | Set-Content "project.json"
  - ps: dnu pack --configuration $env:CONFIGURATION --out dist
  - ps: dir
- - ps: dir dist
+ - ps: dir dist\$env:CONFIGURATION
 
 artifacts:
  - path: dist\$(configuration)\*.nupkg
