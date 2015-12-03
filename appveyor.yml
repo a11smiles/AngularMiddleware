@@ -21,19 +21,20 @@ build_script:
  - ps: cd AngularMiddleware
  - ps: (Get-Content "project.json") -replace '"1\.0\.0-\*"', ('"' + $env:APPVEYOR_BUILD_VERSION + '"') | Set-Content "project.json"
  - ps: dnu pack --configuration $env:CONFIGURATION --out dist
- - ps: dir
- - ps: dir dist\$env:CONFIGURATION
 
-artifacts:
- - path: dist\$(configuration)\*.nupkg
-   name: nuget
+after_build:
+ - ps: Get-ChildItem .\dist\$env:CONFIGURATION\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 
-deploy:
- - provider: GitHub
-   auth_token:
-     secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
-   artifact: /dist\/Release\/.*\.nupkg/
-   draft: false
-   prerelease: false
-   on:
-     branch: master
+#artifacts:
+# - path: dist\$(configuration)\*.nupkg
+#   name: nuget
+
+#deploy:
+# - provider: GitHub
+#   auth_token:
+#     secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
+#   artifact: /dist/
+#   draft: false
+#   prerelease: false
+#   on:
+#     branch: master
