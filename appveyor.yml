@@ -25,7 +25,7 @@ artifacts:
  - path: dist\*.nupkg
 
 deploy:
-- provider:
+- provider: GitHub
   artifact: /.*\.nupkg/
   draft: false
   prerelease: false
