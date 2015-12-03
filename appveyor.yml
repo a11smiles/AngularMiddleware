@@ -10,9 +10,9 @@ install:
 before_build:
  - ps: "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
  - ps: dnvm install 1.0.0-rc1-final
- - ps: dnvm upgrade
- - ps: dnvm update-self
- - ps: dnvm list
+# - ps: dnvm upgrade
+# - ps: dnvm update-self
+# - ps: dnvm list
  - ps: dnvm use 1.0.0-rc1-final
  - ps: npm cache clean
  - ps: dnu restore
@@ -22,5 +22,6 @@ before_build:
 # - cmd: set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
 
 build_script:
+ - ps: cd AngularMiddleware
  - ps: dir
  - ps: dnu pack --configuration Release
