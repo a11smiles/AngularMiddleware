@@ -25,16 +25,12 @@ build_script:
 after_build:
  - ps: Get-ChildItem .\dist\$env:CONFIGURATION\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 
-#artifacts:
-# - path: dist\$(configuration)\*.nupkg
-#   name: nuget
-
 deploy:
  - provider: GitHub
    auth_token:
      secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
-#   artifact: /dist/
    draft: false
    prerelease: false
    on:
      branch: master
+	 appveyor_repo_tag: true
