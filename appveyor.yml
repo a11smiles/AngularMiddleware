@@ -29,12 +29,12 @@ after_build:
 # - path: dist\$(configuration)\*.nupkg
 #   name: nuget
 
-#deploy:
-# - provider: GitHub
-#   auth_token:
-#     secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
+deploy:
+ - provider: GitHub
+   auth_token:
+     secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
 #   artifact: /dist/
-#   draft: false
-#   prerelease: false
-#   on:
-#     branch: master
+   draft: false
+   prerelease: false
+   on:
+     branch: master
