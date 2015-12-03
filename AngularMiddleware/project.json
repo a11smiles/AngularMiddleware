@@ -1,10 +1,11 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "AngularMiddleware Class Library",
-  "authors": [ "Administrator" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "version": "1.0.0",
+  "title": "AngularMiddleware",
+  "description": "Adds ASPNET 5 middleware support for pure client-side Angular applications.",
+  "authors": [ "Joshua Davis" ],
+  "tags": [ "angular", "mvc", "aspnet 5", "mvc 6" ],
+  "projectUrl": "https://github.com/a11smiles/AngularMiddleware/",
+  "licenseUrl": "https://opensource.org/licenses/MIT",
   "frameworks": {
     "net451": {
       "dependencies": {
