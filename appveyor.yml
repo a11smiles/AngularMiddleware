@@ -29,11 +29,11 @@ artifacts:
    name: nuget
 
 #deploy:
-#- provider: GitHub
-#  auth_token:
-#    secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
-#  artifact: nuget
-#  draft: false
-#  prerelease: false
-#  on:
-#    branch: master
+- provider: GitHub
+  auth_token:
+    secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
+  artifact: nuget
+  draft: false
+  prerelease: false
+  on:
+    branch: master
