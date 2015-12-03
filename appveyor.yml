@@ -7,6 +7,8 @@ init:
 install:
  - cmd: nuget sources add -Name api.nuget.org -Source https://api.nuget.org/v3/index.json
 
+configuration: Release
+
 before_build:
  - ps: "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
  - ps: dnvm install 1.0.0-rc1-final
@@ -23,5 +25,9 @@ before_build:
 
 build_script:
  - ps: cd AngularMiddleware
- - ps: dir
- - ps: dnu pack --configuration Release
+ - ps: (Get-Content "project.json") -replace '"version": "1\.0\.0-\*"', '"version": "1.0.{build}"' | Set-Content "project.json"
+ - ps: dnu pack --configuration $(configuration)
+
+artifacts:
+ - path: bin\$(configuration)\*.nupkg
+
