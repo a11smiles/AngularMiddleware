@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0",
+  "version": "1.0.0-*",
   "title": "AngularMiddleware",
   "description": "Adds ASPNET 5 middleware support for pure client-side Angular applications.",
   "authors": [ "Joshua Davis" ],
