@@ -7,7 +7,7 @@ init:
 install:
  - cmd: nuget sources add -Name api.nuget.org -Source https://api.nuget.org/v3/index.json
 
-version: 1.0
+version: 1.0.{build}
 configuration: Release
 
 before_build:
@@ -19,7 +19,7 @@ before_build:
 
 build_script:
  - ps: cd AngularMiddleware
- - ps: (Get-Content "project.json") -replace '"' + $env:VERSION + '\.0"', ('"' + $env:VERSION + '.' + $env:APPVEYOR_BUILD_NUMBER + '"') | Set-Content "project.json"
+ - ps: (Get-Content "project.json") -replace '"1\.0"', ('"' + $env:VERSION '"') | Set-Content "project.json"
  - ps: dnu pack --configuration $env:CONFIGURATION --out dist
  - ps: dir
  - ps: dir dist
