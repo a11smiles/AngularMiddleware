@@ -9,11 +9,11 @@ install:
 
 before_build:
  - ps: "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
- - ps: dnvm install 1.0.0-rc1-udpdate1
+ - ps: dnvm install 1.0.0-rc1-final
  - ps: dnvm upgrade
  - ps: dnvm update-self
  - ps: dnvm list
- - ps: dnvm use 1.0.0-rc1-update1
+ - ps: dnvm use 1.0.0-rc1-final
  - ps: npm cache clean
  - ps: dnu restore
 # Use NuGet 2.*
