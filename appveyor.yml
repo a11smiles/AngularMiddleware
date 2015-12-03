@@ -32,7 +32,7 @@ deploy:
  - provider: GitHub
    auth_token:
      secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
-   artifact: nuget
+   artifact: /dist\/Release\/.*\.nupkg/
    draft: false
    prerelease: false
    on:
