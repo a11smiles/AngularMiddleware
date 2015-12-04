@@ -12,7 +12,7 @@ Typically, with ASP.NET web applications, there are a few requirements for suppo
 1. Unnecessary controllers and views that are serving static pages
 2. Creating "catch-all" routes:  
 
-   ```  
+   ```csharp  
    routes.MapRoute(  
        "",  
        "{url}",  
@@ -44,7 +44,7 @@ Therefore, AngularMiddleware provides a solution to the issues listed above and 
 ### Installation
 AngularMiddleware should be listed in your project's `dependencies` within the _project.json_ configuration file.  NuGet will download the libaries and include them in your project automatically.
 
-```
+```csharp
 {
   ...
 
@@ -60,7 +60,7 @@ AngularMiddleware should be listed in your project's `dependencies` within the _
 **Startup.cs**  
 Add a `using` reference for _AngularMiddleware_ at the top of your _StartUp_ class file.  Then, add AngularMiddleware to the `Configure()` method.
 
-```
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env) 
 {
    ...
@@ -76,7 +76,7 @@ This is the basic configuration and, assuming that you have `index.html` in your
 **Different Default Document**  
 In the case you choose a different document as your default (e.g. instead of `index.html`), you can tell AngularMiddleware what that default document should be.
 
-```
+```csharp
 app.UseAngular(routes =>
 {
     routes.DefaultRoute = "default.html";
@@ -87,7 +87,7 @@ app.UseAngular(routes =>
 **Route/Page Redirection**  
 Let's say that you wish to redirect all requests for `~/administrators.html`, `~/hr_users.html`, and `~/marketing_users.html` to `~/users.html`.
 
-```
+```csharp
 app.UseAngular(routes =>
 {
     routes.MapAngularRoute(new[] { "administrators.html", "hr_users.html", "marketing_users.html" }, "users.html");
@@ -98,7 +98,7 @@ app.UseAngular(routes =>
 **Ingore Specific Requests**  
 AngularMiddleware also allows you to ignore specific requests.
 
-```
+```csharp
 app.UseAngular(routes =>
 {
     routes.IgnoreAngularRoute("admin.html");
@@ -106,7 +106,7 @@ app.UseAngular(routes =>
 
 ```  
 
-_NOTE: `IgnoreAngularRoute` should only be used in rare cases that the pipeline doesn't service a request properly.  If you are using `MVC` middleware and you've defined routes (e.g. legacy routing or attribute routing), those routes will be ignored by AngularMiddleware and be served, instead, by the MVC middleware.  Likewise, if you are using either/both of the `DefaultFiles` and `StaticFiles` middleware, unless a specific route is mapped (i.e. rewritten) or ignored, these middleware will serve static files - including the default files (if `DefaultFiles` middleware is used). _  
+_NOTE: `IgnoreAngularRoute` should only be used in rare cases that the pipeline doesn't service a request properly.  If you are using `MVC` middleware and you've defined routes (e.g. legacy routing or attribute routing), those routes will be ignored by AngularMiddleware and be served, instead, by the MVC middleware.  Likewise, if you are using either/both of the `DefaultFiles` and `StaticFiles` middleware, unless a specific route is mapped (i.e. rewritten) or ignored, these middleware will serve static files - including the default files (if `DefaultFiles` middleware is used)._  
 ### License
 AngularMiddleware is released under the [MIT License](http://www.opensource.org/licenses/MIT).
 
