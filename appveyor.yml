@@ -29,7 +29,7 @@ after_build:
 deploy:
  - provider: GitHub
    auth_token:
-     secure: SYb32DuCMENA1CBbJimmnGZafiLsFMN4QAH6B3R6x2rnWHftwUvrD9eE1J+V8C4B
+     secure: +FlkanKykzy+eGJMUpN9T3I67siW3VvzPKeoPf7/zpiCJqicv8OprCzA2AQU0JZj
    draft: false
    prerelease: false
    on:
